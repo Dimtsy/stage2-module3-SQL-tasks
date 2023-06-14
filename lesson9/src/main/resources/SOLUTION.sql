@@ -1,0 +1,3 @@
+SELECT student.* FROM student JOIN mark ON student.id=mark.student_id GROUP BY student.name HAVING AVG(mark.mark) > 8;
+SELECT student.id, student.name FROM student JOIN mark ON student.id=mark.student_id GROUP BY student.name HAVING MIN(mark.mark) > 7;
+SELECT student.id, student.name FROM student JOIN payment ON student.id=payment.student_id WHERE payment.payment_date BETWEEN '2019-01-01' AND '2019-12-31' GROUP BY student.name HAVING COUNT(student.name) > 2;
