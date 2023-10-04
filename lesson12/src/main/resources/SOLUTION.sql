@@ -1,10 +1,4 @@
-ALTER TABLE mark DROP FOREIGN KEY  mark_student_id_fkey;
-ALTER TABLE mark ADD CONSTRAINT fk_t1_t2_tt FOREIGN KEY (student_id) REFERENCES student (id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE payment DROP FOREIGN KEY payment_student_id_fkey;
-ALTER TABLE payment ADD CONSTRAINT fk_t1_t2_tt_payment FOREIGN KEY (student_id) REFERENCES student (id) ON DELETE CASCADE ON UPDATE CASCADE;
 DELETE FROM student WHERE student.id IN (SELECT mark.student_id FROM mark GROUP BY mark.student_id HAVING MIN(mark.mark) = 4);
 DELETE FROM student WHERE student.id IN (SELECT mark.student_id FROM mark WHERE mark.mark <4);
-ALTER TABLE payment DROP FOREIGN KEY payment_type_id_fkey;
-ALTER TABLE payment ADD CONSTRAINT fk_t1_t2_tt_payment_type FOREIGN KEY (type_id) REFERENCES paymenttype (id) ON DELETE CASCADE ON UPDATE CASCADE;
 DELETE FROM paymenttype WHERE paymenttype.name = 'DAILY';
 DELETE FROM mark WHERE mark.mark <7;
